@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+  <style>
+
+    /* CSS untuk transisi yang lebih halus */
+    .section {
+        transition: top 1s ease-in-out, opacity 1s ease-in-out;
+    }
+
+    /* Section 1 */
+    #section1 {
+        font-size: 3rem;
+    }
+
+    /* Section 2 */
+    #section2 {
+        position: absolute;
+        width: 100%;
+        background-color: #f97316; /* Orange */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+        transition: top 1s ease-in-out;
+        z-index: 10;
+    }
+
+
+    .parallax {
+      transition: background-position 0.3s ease-out;
+    }
+
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+    <div class="container mx-auto">
+        <!-- Section 1 - Purple -->
+        <section id="section1" class="relative text-center bg-[#6b21a8] grid grid-cols-0 gap-1 p-1 h-screen justify-center items-center top-0 left-0 w-full">
+    
+                <!-- Section 1-1 (Top) -->
+                <div class="text-white z-10 h-24 flex justify-center items-center">
+                    Section 1-1 (Purple)
+                </div>
+    
+                <!-- Video Section -->
+                <div class="z-9">
+                    <video autoplay muted loop class="w-screen h-48 object-cover">
+                    <source src="samsung.mp4" type="video/mp4">
+                    </video>
+                </div>
+    
+                <!-- Section 1-2 (Bottom) -->
+                <div class="text-white z-10 h-24 flex justify-center items-center">
+                    Section 1-2 (Purple)
+                </div>
+        </section>
+    </div>
+
+    <div class="container-fluid">
+        <!-- Section 2 - Orange -->
+        <section id="section2"  class="text-center flex justify-center items-center h-[300vh] ">
+            <div class="grid-rows-2 ">
+                <div class="h-screen">
+                    Section 2 (Orange)
+                </div class="h-screen">
+                <div>
+                    Section 2-1 (Orange)
+                </div>
+            </div>
+
+        </section>
+    </div>
+    
+    <div class="container mx-auto">
+        <!-- Section 3 - Green -->
+        <section id="section3"  class="relative text-white text-2xl bg-[#68d600] text-center h-[400vh] ">
+            <div class="text-center ">
+                <div class="grid grid-rows-2 gap-0 ">
+    
+                    <div class=" text-center bg-red-600 w-screen h-48">
+                        Section 3 h-screen 1 (red)
+                    </div>
+    
+                    <div id="section3-1-1-paralax" class="relative text-center bg-purple-600 flex justify-center items-center w-screen h-32  bg-cover bg-center bg-no-repeat bg-fixed parallax" style="background-image: url('hero.webp');">
+                        Section 3  1-1paralax
+                    </div>
+    
+                </div>
+    
+            </div>
+            <div class="text-center flex justify-center items-center h-screen">
+                <div id="section3-1-1-paralax" class="relative text-center bg-purple-600 flex justify-center items-center w-screen h-32  bg-cover bg-center bg-no-repeat bg-fixed parallax" style="background-image: url('hero.webp');">
+                    Section 3 h-screen 2 paralax
+                </div>
+            </div>
+            <div class="text-center flex justify-center items-center h-screen">
+                Section 3 h-screen 3 (Green)
+            </div>
+            <div class="text-center flex justify-center items-center h-screen">
+                Section 3 h-screen 4 (Green)
+            </div>
+        </section>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const section2 = document.getElementById('section2');
+            const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+            // Cek jika jarak scroll sudah lebih dari 100px
+            if (scrollPosition >= 100) {
+                console.log('Sudah lebih dari 100px');
+                section2.style.top = '0'; // Pindahkan Section 2 ke atas
+            } else {
+                // Jika scroll kurang dari 100px, kembalikan Section 2 ke bawah
+                section2.style.top = '900px'; // Kembali ke posisi semula
+            }
+
+            // Cek jika scroll lebih dari 200px, maka Section 2 tetap di atas
+            if (scrollPosition > 200) {
+                console.log('Sudah lebih dari 200px');
+                // Section 2 akan tetap berada di atas
+            }
+        });
+    </script>
+
+
+    <script>
+        // Function to handle the scroll effect
+        window.addEventListener('scroll', function () {
+        const parallax = document.getElementById('section3-1-1-paralax');
+        const scrollPosition = window.scrollY;
+
+        // Update the background position based on scroll position
+        parallax.style.backgroundPosition = 'center ' + (scrollPosition * 0.1) + 'px';
+        });
+    </script>
+
+
+</body>
+
+</html>
